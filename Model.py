@@ -11,7 +11,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor
-
+import pickle
 
 df = pd.read_csv("Cleaned_data_final.csv")
 cars = df["Name"].unique().tolist()
@@ -64,9 +64,10 @@ def price_predict(kilometers,mileage,engine,power,seats,age,fuel,transmission,ow
             x[pos] = 1
     return ranreg.predict([x])[0]
 
-list1 = price_predict(78000,14.74,2993,270.9,5,9,"Diesel","Automatic","Second","Jaguar")
-print(round(list1,2))
+list1 = price_predict(67000,18,1100,67,5,16,"Petrol","Manual","Second","Maruti")
+print("Rs.",round(list1,2),"Lacs")
 
-
+with open("Car_price_prediction.pickle","wb") as f:
+    pickle.dump(ranreg,f)
 
 
