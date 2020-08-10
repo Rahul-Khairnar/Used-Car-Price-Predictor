@@ -53,6 +53,9 @@ ranreg = RandomForestRegressor(n_estimators = 100,criterion="mse")
 ranreg.fit(X_train,y_train)
 ranreg.score(X_test,y_test)
 
+x = [40000,20.1,1248,88.5,5,3,1,0,0,0,1,1,0]
+ranreg.predict([x])
+
 
 
 
