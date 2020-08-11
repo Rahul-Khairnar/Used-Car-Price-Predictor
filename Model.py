@@ -12,6 +12,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor
 import pickle
+import json
 
 df = pd.read_csv("Cleaned_data_final.csv")
 cars = df["Name"].unique().tolist()
@@ -69,5 +70,11 @@ print("Rs.",round(list1,2),"Lacs")
 
 with open("Car_price_prediction.pickle","wb") as f:
     pickle.dump(ranreg,f)
+
+columns = X_train.columns.tolist()
+with open("columns.json","w") as f:
+    f.write(json.dumps(columns))
+    
+
 
 
